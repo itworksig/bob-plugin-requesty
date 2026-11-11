@@ -1,0 +1,178 @@
+{
+    "identifier": "com.requesty.translate",
+    "type": "translate",
+    "name": "Requesty",
+    "version": "0.1.0",
+    "supportedLanguages": [
+        "auto",
+        "zh-Hans",
+        "zh-Hant",
+        "en",
+        "ja",
+        "ko",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "ru",
+        "pt",
+        "nl",
+        "pl",
+        "ar",
+        "af",
+        "hi",
+        "th",
+        "vi",
+        "uz",
+        "tg",
+        "fa",
+        "kk",
+        "ur",
+        "id",
+        "ms",
+        "pa",
+        "ps"
+    ],
+    "homepage": "https://github.com/itworksig/bob-plugin-requesty",
+    "appcast": "https://raw.githubusercontent.com/itworksig/bob-plugin-requesty/main/appcast.json",
+    "category": "translate",
+    "icon": "icon.png",
+    "author": "DemoChen",
+    "minBobVersion": "0.5.0",
+    "options": [
+        {
+            "identifier": "apiKey",
+            "type": "text",
+            "title": "API Key",
+            "desc": "在 https://app.requesty.ai/ 的 API Keys 页面创建"
+        },
+        {
+            "identifier": "apiRegion",
+            "type": "menu",
+            "title": "API 节点",
+            "defaultValue": "global",
+            "desc": "默认走全球节点。需要数据留在特定区域时再切换",
+            "menuValues": [
+                {
+                    "title": "全球 router.requesty.ai",
+                    "value": "global"
+                },
+                {
+                    "title": "欧盟 router.eu.requesty.ai",
+                    "value": "eu"
+                },
+                {
+                    "title": "美国 router.us.requesty.ai",
+                    "value": "us"
+                },
+                {
+                    "title": "亚太 router.ap.requesty.ai",
+                    "value": "ap"
+                },
+                {
+                    "title": "自定义",
+                    "value": "custom"
+                }
+            ]
+        },
+        {
+            "identifier": "customApiBase",
+            "type": "text",
+            "title": "自定义 API Base URL",
+            "desc": "只填到 /v1，例如 https://router.requesty.ai/v1",
+            "placeholder": "https://router.requesty.ai/v1",
+            "condition": {
+                "apiRegion": "custom"
+            }
+        },
+        {
+            "identifier": "model",
+            "type": "menu",
+            "title": "AI Model",
+            "defaultValue": "openai/gpt-6-luna",
+            "menuValues": [
+                {
+                    "title": "GPT-6 Luna",
+                    "value": "openai/gpt-6-luna"
+                },
+                {
+                    "title": "GPT-6 Sol",
+                    "value": "openai/gpt-6-sol"
+                },
+                {
+                    "title": "Claude Haiku 5.5",
+                    "value": "anthropic/claude-haiku-5-5"
+                },
+                {
+                    "title": "Claude Sonnet 5.5",
+                    "value": "anthropic/claude-sonnet-5-5"
+                },
+                {
+                    "title": "Claude Opus 5.5",
+                    "value": "anthropic/claude-opus-5-5"
+                },
+                {
+                    "title": "Gemini 3.6 Flash",
+                    "value": "google/gemini-3.6-flash"
+                },
+                {
+                    "title": "DeepSeek V4.1 Flash",
+                    "value": "deepseek/deepseek-v4.1-flash"
+                },
+                {
+                    "title": "Qwen 3.8 Flash",
+                    "value": "alibaba/qwen3.8-flash"
+                },
+                {
+                    "title": "Grok 4.7",
+                    "value": "xai/grok-4.7"
+                },
+                {
+                    "title": "自定义模型",
+                    "value": "custom"
+                }
+            ]
+        },
+        {
+            "identifier": "customModel",
+            "type": "text",
+            "title": "自定义模型名称",
+            "desc": "当选择「自定义模型」时填写 Requesty 模型 ID，也可以填 policy/策略名",
+            "placeholder": "例如: openai/gpt-6-luna 或 policy/sonnet-with-fallback",
+            "condition": {
+                "model": "custom"
+            }
+        },
+        {
+            "identifier": "promptMode",
+            "type": "menu",
+            "title": "Prompt 模式",
+            "defaultValue": "translate",
+            "desc": "翻译模式使用内置翻译提示词；自定义模式使用下方填写的 Prompt",
+            "menuValues": [
+                {
+                    "title": "翻译模式",
+                    "value": "translate"
+                },
+                {
+                    "title": "自定义模式",
+                    "value": "custom"
+                }
+            ]
+        },
+        {
+            "identifier": "customPrompt",
+            "type": "text",
+            "title": "自定义 Prompt",
+            "defaultValue": "你是一个翻译助手。请把用户文本翻译成{to}，只返回译文，不要解释。",
+            "desc": "仅自定义模式生效。{from} 为源语言，{to} 为目标语言。写了 {text} 时，整段 Prompt 作为用户消息；没写时，Prompt 作为系统提示，原文单独发送。",
+            "textConfig": {
+                "type": "visible",
+                "height": 120
+            },
+            "condition": {
+                "promptMode": "custom"
+            }
+        }
+    ]
+}

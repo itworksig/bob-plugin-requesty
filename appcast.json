@@ -1,0 +1,13 @@
+{
+    "identifier": "com.requesty.translate",
+    "versions": [
+        {
+            "version": "0.1.0",
+            "desc": "初始版本：翻译模式、自定义 Prompt，语言与 OpenRouter 插件一致",
+            "sha256": "f997f5dbbef84159182268bb9aa00f357473413e2c77cdb626cb27520032284e",
+            "url": "https://github.com/itworksig/bob-plugin-requesty/releases/download/v0.1.0/bob-plugin-requesty.bobplugin",
+            "minBobVersion": "0.5.0",
+            "timestamp": 1794388551456
+        }
+    ]
+}
